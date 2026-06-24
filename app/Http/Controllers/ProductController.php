@@ -7,56 +7,65 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-       return view('backend.parts.index');
+        $products = Product::latest()->get();
+
+        return view('backend.parts.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-       return view('backend.parts.create');
-    }
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('backend.parts.create');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'status' => 'required',
+        ]);
+
+        $imageName = null;
+
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+
+            $imageName = time().'.'.$file->getClientOriginalExtension();
+
+            $file->move(public_path('uploads/products'), $imageName);
+        }
+
+        Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'status' => $request->status,
+            'image' => $imageName,
+        ]);
+
+        return redirect()->route('product.index')
+            ->with('success', 'Product Added Successfully');
+    }
+
     public function show(Product $product)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Product $product)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Product $product)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
         //
