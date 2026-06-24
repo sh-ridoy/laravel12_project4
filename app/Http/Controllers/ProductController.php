@@ -9,11 +9,15 @@ class ProductController extends Controller
 {
     public function index()
     {
+
         $products = Product::all();
 
         return view('backend.parts.index', [
             'items' => $products
         ]);
+
+        return view('backend.parts.index');
+
     }
 
     public function create()
@@ -75,4 +79,8 @@ class ProductController extends Controller
     {
         //
     }
+
 }
+
+
+

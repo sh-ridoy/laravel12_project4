@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -62,4 +62,6 @@ class CategoryController extends Controller
     {
         //
     }
+
 }
+
