@@ -68,7 +68,6 @@
 									</tr>
 								</thead>
 								<tbody>
-<<<<<<< HEAD
                                     @foreach ($items as $item )
                                         
                        
@@ -88,7 +87,6 @@
 								</tbody>
 								<tfoot>
 									
-=======
 									<tr>
 										<td>Tiger Nixon</td>
 										<td>System Architect</td>
@@ -555,7 +553,6 @@
 										<th>Start date</th>
 										<th>Salary</th>
 									</tr>
->>>>>>> 65c0819d0d6fdea50c438b7d31a5e470a7231e61
 								</tfoot>
 							</table>
 						</div>
