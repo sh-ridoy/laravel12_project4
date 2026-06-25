@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,7 +23,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('backend.parts.create');
+       $cats= Category::all();
+        return view('backend.parts.create',['items'=>$cats]);
     }
 
     public function store(Request $request)

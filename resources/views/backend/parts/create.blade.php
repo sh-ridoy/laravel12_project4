@@ -240,33 +240,22 @@
                                     class="form-select @error('category') is-invalid @enderror"
                                     id="AddCategory"
                                     name="category">
+                                      <option value="">Select one</option>
+                                    @foreach ($items as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}
 
-                                    <option value="">Select Category</option>
-
-                                    <option value="Topwear"
-                                        {{ old('category') == 'Topwear' ? 'selected' : '' }}>
-                                        Topwear
                                     </option>
+                                    @endforeach
 
-                                    <option value="Bottomwear"
-                                        {{ old('category') == 'Bottomwear' ? 'selected' : '' }}>
-                                        Bottomwear
-                                    </option>
+                                    
 
-                                    <option value="Casual Tshirt"
-                                        {{ old('category') == 'Casual Tshirt' ? 'selected' : '' }}>
-                                        Casual Tshirt
-                                    </option>
 
-                                    <option value="Electronic"
-                                        {{ old('category') == 'Electronic' ? 'selected' : '' }}>
-                                        Electronic
-                                    </option>
+                                    
                                 </select>
 
                                 @error('category')
                                     <div class="invalid-feedback">
-                                        {{ $message }}
+                                     
                                     </div>
                                 @enderror
 
